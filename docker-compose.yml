@@ -1,0 +1,18 @@
+
+services:
+  client-linux-login:
+    build: ./client-linux-login
+    depends_on:
+      - log-collector
+
+  log-collector:
+    build: ./log-collector
+    ports:
+      - "9000:9000"
+    depends_on:
+      - log-server
+
+  log-server:
+    build: ./log-server
+    ports:
+      - "8080:8080"
